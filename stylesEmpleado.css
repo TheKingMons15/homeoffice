@@ -1,0 +1,100 @@
+/* Estilo global */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Arial', sans-serif;
+}
+
+/* Estilo del cuerpo */
+body {
+  display: flex;
+  height: 100vh;
+  background-color: #f4f4f4;
+}
+
+/* Sidebar */
+.sidebar {
+  width: 250px;
+  height: 100%;
+  background-color: #5370cc;
+  padding-top: 20px;
+  position: fixed;
+}
+
+.sidebar h2 {
+  color: white;
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.sidebar ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.sidebar ul li {
+  padding: 15px;
+  text-align: center;
+}
+
+.sidebar ul li a {
+  color: white;
+  text-decoration: none;
+  display: block;
+  transition: transform 0.3s ease; /* Transición suave para el efecto de zoom */
+}
+
+.sidebar ul li a:hover {
+  transform: scale(1.1); /* Aumenta el tamaño en un 10% */
+  background-color: #a4e93573; /* Opción para cambiar el fondo al pasar el ratón */
+  border-radius: 5px;
+
+}
+
+/* Main content */
+.content {
+  margin-left: 250px; /* Empuja el contenido hacia la derecha para dar espacio al sidebar */
+  padding: 20px;
+  width: 100%;
+  background-color: #fff;
+}
+
+.content h1 {
+  margin-bottom: 20px;
+  color: #5370cc;
+}
+
+
+
+.image-container {
+  position: 10;
+  top: 50px; /* Mueve la imagen hacia arriba */
+  text-align: center;
+}
+
+.form-image {
+  width: 90%; /* Ajusta el tamaño de la imagen según tus necesidades */
+  height: auto;
+}
+
+
+
+#calendar {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 5px;
+  margin-top: 20px;
+}
+
+#calendar div {
+  padding: 10px;
+  background-color: #e2e2e2;
+  text-align: center;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+#calendar div:hover {
+  background-color: #d1d1d1;
+}
