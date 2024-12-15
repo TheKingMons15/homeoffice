@@ -77,3 +77,74 @@ body {
   width: 90%; /* Ajusta el tamaño de la imagen según tus necesidades */
   height: auto;
 }
+.btn-accion {
+  background-color: #5370cc;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 5px;
+  font-size: 14px;
+  cursor: pointer;
+  margin-top: 20px;
+  transition: background-color 0.3s ease;
+}
+
+.btn-accion:hover {
+  background-color: #3b4f99; /* Color más oscuro al pasar el ratón */
+}
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+.table th, .table td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: left;
+}
+
+.table th {
+  background-color: #5370cc;
+  color: white;
+}
+
+.mensaje {
+  margin: 10px 0;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.mensaje.enviado {
+  background-color: #d1e7dd;
+  text-align: right;
+}
+
+.mensaje.recibido {
+  background-color: #f8d7da;
+  text-align: left;
+}
+
+.chat {
+  margin-top: 20px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  padding: 10px;
+}
+
+.chat-input {
+  display: flex;
+  margin-top: 10px;
+}
+
+.chat-input input {
+  flex: 1;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  margin-right: 10px;
+}
+
+.chat-input button {
+  padding: 10px;
+}
