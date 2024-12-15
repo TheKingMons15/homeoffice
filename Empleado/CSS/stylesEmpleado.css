@@ -1,0 +1,576 @@
+.welcome-message {
+  text-align: center;
+  margin-top: 50px;
+  color: #333;
+}
+
+.welcome-message h1 {
+  font-size: 2rem;
+  color: #4caf50; /* Verde para destacar */
+}
+
+.welcome-message p {
+  font-size: 1.2rem;
+  margin-top: 10px;
+  color: #555;
+}
+
+/* Estilo global */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Arial', sans-serif;
+}
+
+/* Estilo del cuerpo */
+body {
+  display: flex;
+  height: 100vh;
+  background-color: #f4f4f4;
+}
+
+/* Sidebar */
+.sidebar {
+  width: 250px;
+  height: 100%;
+  background-color: #5370cc;
+  padding-top: 20px;
+  position: fixed;
+}
+
+.sidebar h2 {
+  color: white;
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.sidebar ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.sidebar ul li {
+  padding: 15px;
+  text-align: center;
+}
+
+.sidebar ul li a {
+  color: white;
+  text-decoration: none;
+  display: block;
+  transition: transform 0.3s ease; /* Transición suave para el efecto de zoom */
+}
+
+.sidebar ul li a:hover {
+  transform: scale(1.1); /* Aumenta el tamaño en un 10% */
+  background-color: #a4e93573; /* Opción para cambiar el fondo al pasar el ratón */
+  border-radius: 5px;
+
+}
+
+/* Main content */
+.content {
+  margin-left: 250px; /* Empuja el contenido hacia la derecha para dar espacio al sidebar */
+  padding: 20px;
+  width: 100%;
+  background-color: #fff;
+}
+
+.content h1 {
+  margin-bottom: 20px;
+  color: #5370cc;
+}
+
+
+
+.image-container {
+  position: 10;
+  top: 50px; /* Mueve la imagen hacia arriba */
+  text-align: center;
+}
+
+.form-image {
+  width: 90%; /* Ajusta el tamaño de la imagen según tus necesidades */
+  height: auto;
+}
+
+
+
+#calendar {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 5px;
+  margin-top: 20px;
+}
+
+#calendar div {
+  padding: 10px;
+  background-color: #e2e2e2;
+  text-align: center;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+#calendar div:hover {
+  background-color: #d1d1d1;
+}
+
+
+/* Estilos para el contenedor de chat */
+#chat-container {
+  max-width: 600px;
+  margin: 0 auto;
+  border: 1px solid #e0e0e0;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+#chat-header {
+  display: flex;
+  align-items: center;
+  padding: 15px;
+  background-color: #f1f1f1;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+
+.profile-image {
+  width: 70px;
+  height: 70px;
+  border-radius: 80%;
+  margin-right: 15px;
+}
+
+.chat-info h3 {
+  margin: 0;
+  font-size: 18px;
+}
+
+.chat-info .status {
+  color: #4CAF50;
+  font-size: 12px;
+  margin: 5px 0 0;
+}
+
+#chat-messages {
+  height: 400px;
+  overflow-y: auto;
+  padding: 15px;
+  background-color: #f9f9f9;
+}
+
+.message {
+  max-width: 70%;
+  margin-bottom: 10px;
+  padding: 10px;
+  border-radius: 10px;
+  clear: both;
+}
+
+.message.sent {
+  background-color: #DCF8C6;
+  float: right;
+  text-align: right;
+}
+
+.message.received {
+  background-color: #FFFFFF;
+  float: left;
+  text-align: left;
+}
+
+#chat-input {
+  display: flex;
+  padding: 5px;
+  background-color: #f1f1f1;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+}
+
+#message-input {
+  flex-grow: 1;
+  padding: 10px;
+  border: 1px solid #e0e0e0;
+  border-radius: 20px;
+  margin-right: 10px;
+}
+
+#send-message {
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 45px;
+  height: 45px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+
+/* Mantener los estilos existentes y agregar los nuevos */
+/* ... (todos los estilos que ya tienes hasta el final) ... */
+
+/* Estilos para Proyectos */
+#proyectos-container {
+  max-width: 1000px;
+  margin: 20px auto;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  padding: 20px;
+}
+
+.proyectos-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.dashboard-stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
+  margin-bottom: 30px;
+}
+
+.stat-card {
+  background: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  text-align: center;
+  border: 1px solid #e0e0e0;
+}
+
+.stat-card i {
+  font-size: 24px;
+  color: #5370cc;
+  margin-bottom: 10px;
+}
+
+.stat-card h3 {
+  color: #333;
+  font-size: 16px;
+  margin: 10px 0;
+}
+
+.stat-card p {
+  color: #5370cc;
+  font-size: 24px;
+  font-weight: bold;
+  margin: 0;
+}
+
+.lista-proyectos {
+  margin-top: 20px;
+}
+
+.proyecto-card {
+  background: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  border: 1px solid #e0e0e0;
+  margin-bottom: 15px;
+  transition: transform 0.3s ease;
+}
+
+.proyecto-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.proyecto-card h3 {
+  color: #5370cc;
+  margin-bottom: 10px;
+}
+
+.proyecto-info {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 15px;
+  font-size: 14px;
+}
+
+.estado {
+  background: #5370cc;
+  color: white;
+  padding: 5px 15px;
+  border-radius: 15px;
+  font-size: 12px;
+}
+
+/* Estilos para Equipo */
+#equipo-container {
+  max-width: 1000px;
+  margin: 20px auto;
+  padding: 20px;
+}
+
+.miembros-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+  padding: 20px 0;
+}
+
+.miembro-card {
+  background: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  border: 1px solid #e0e0e0;
+  text-align: center;
+  transition: transform 0.3s ease;
+}
+
+.miembro-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.miembro-foto {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  margin-bottom: 15px;
+  border: 3px solid #5370cc;
+}
+
+.miembro-card h3 {
+  color: #5370cc;
+  margin-bottom: 5px;
+}
+
+.miembro-card p {
+  color: #666;
+  font-size: 14px;
+  margin-bottom: 15px;
+}
+
+.miembro-stats {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-top: 15px;
+}
+
+.miembro-stats span {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  color: #666;
+  font-size: 14px;
+}
+
+.miembro-stats i {
+  color: #5370cc;
+}
+
+/* Botón común */
+.btn-nuevo {
+  background-color: #5370cc;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.btn-nuevo:hover {
+  transform: scale(1.05);
+  background-color: #4560b8;
+}
+
+/* Ajustes responsivos */
+@media (max-width: 768px) {
+  .dashboard-stats {
+    grid-template-columns: 1fr;
+  }
+  
+  .miembros-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .proyecto-info {
+    flex-direction: column;
+    gap: 10px;
+  }
+}
+
+
+#timeline-container {
+  position: relative;
+  height: 250px; /* Incrementamos la altura para acomodar las fechas */
+  border-top: 2px solid #ccc;
+  margin: 20px 0;
+  background-color: #f9f9f9;
+  overflow-x: auto; /* Permite manejar tareas largas */
+  white-space: nowrap;
+  padding: 20px; /* Espacio adicional alrededor */
+}
+
+.tarea {
+  position: absolute;
+  top: 50px;
+  min-height: 50px; /* Altura mínima del cuadro principal */
+  border-radius: 5px;
+  color: white;
+  text-align: center;
+  padding: 10px; /* Espaciado interno */
+  font-size: 14px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden; /* Para evitar que el texto desborde */
+  white-space: normal; /* Permite que el texto haga saltos de línea */
+}
+
+.tarea[data-estado="completado"] {
+  background-color: #4caf50; /* Verde para completado */
+}
+
+.tarea[data-estado="en-progreso"] {
+  background-color: #2196f3; /* Azul para en progreso */
+}
+
+.tarea[data-estado="pendiente"] {
+  background-color: #ff9800; /* Naranja para pendiente */
+}
+
+.tarea .titulo {
+  font-weight: bold;
+  margin-bottom: 5px;
+  word-wrap: break-word; /* Ajuste para textos largos */
+}
+
+/* Estilo de las fechas */
+.tarea .fecha-container {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.fecha {
+  background-color: #e0e0e0;
+  color: #333;
+  padding: 5px 10px;
+  font-size: 12px;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  min-width: 80px; /* Tamaño mínimo del cuadro de fecha */
+}
+
+/* Leyenda */
+.legend {
+  display: flex;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.legend-item {
+  display: inline-block;
+  padding: 5px 15px;
+  border-radius: 5px;
+  color: white;
+  font-size: 12px;
+}
+
+.legend-item.completado {
+  background-color: #4caf50;
+}
+
+.legend-item.en-progreso {
+  background-color: #2196f3;
+}
+
+.legend-item.pendiente {
+  background-color: #ff9800;
+}
+
+/* Estilo del botón */
+button {
+  background-color: #2196f3; /* Azul para el botón */
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #1769aa; /* Más oscuro al pasar el mouse */
+}
+
+
+
+#lista-tareas {
+  margin-top: 20px;
+}
+
+.tarea {
+  position: relative;
+  margin-bottom: 20px;
+  border-radius: 8px;
+  padding: 15px;
+  background-color: #ff9800; /* Color de fondo según estado */
+  color: white;
+  font-size: 16px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra para destacar */
+  text-align: center; /* Centrar contenido */
+}
+
+.tarea .titulo {
+  font-weight: bold;
+  margin-bottom: 10px; /* Espaciado con las fechas */
+  text-align: center;
+  word-wrap: break-word; /* Ajuste para texto largo */
+}
+
+.tarea .fecha-container {
+  display: flex;
+  justify-content: center; /* Centrar las fechas */
+  gap: 10px; /* Espaciado entre fechas */
+  margin-top: 10px;
+}
+
+.fecha {
+  background-color: white;
+  color: #333;
+  padding: 5px 10px;
+  font-size: 14px;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  min-width: 80px;
+  text-align: center;
+}
+
+/* Botón para agregar nueva tarea */
+.btn-nuevo {
+  background-color: #4caf50; /* Verde para el botón */
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 5px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 5px; /* Espaciado entre icono y texto */
+}
+
+.btn-nuevo:hover {
+  background-color: #388e3c; /* Verde más oscuro al pasar el cursor */
+}
