@@ -574,3 +574,287 @@ button:hover {
 .btn-nuevo:hover {
   background-color: #388e3c; /* Verde más oscuro al pasar el cursor */
 }
+
+
+/* Estilos mejorados para la sección de reuniones */
+#reuniones-container {
+  padding: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  background-color: #f8f9fa;
+  border-radius: 15px;
+}
+
+.reuniones-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2.5rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 2px solid #e9ecef;
+}
+
+.reuniones-header h1 {
+  color: #2c3e50;
+  font-size: 2.2rem;
+  font-weight: 600;
+  margin: 0;
+}
+
+.btn-nuevo {
+  background: linear-gradient(135deg, #4CAF50 0%, #45a049 100%);
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 25px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 1rem;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+.btn-nuevo:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+}
+
+.dashboard-stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 2.5rem;
+}
+
+.stat-card {
+  background: white;
+  padding: 1.5rem;
+  border-radius: 15px;
+  text-align: center;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+  transition: transform 0.3s ease;
+  border: 1px solid #e9ecef;
+}
+
+.stat-card:hover {
+  transform: translateY(-5px);
+}
+
+.stat-card i {
+  font-size: 2rem;
+  background: linear-gradient(135deg, #3498db 0%, #2980b9 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 1rem;
+}
+
+.stat-card h3 {
+  margin: 0.5rem 0;
+  font-size: 1.1rem;
+  color: #6c757d;
+  font-weight: 500;
+}
+
+.stat-card p {
+  font-size: 2rem;
+  font-weight: 600;
+  color: #2c3e50;
+  margin: 0.5rem 0;
+}
+
+.filtros-reuniones {
+  margin-bottom: 2rem;
+}
+
+.form-select {
+  padding: 12px 20px;
+  border-radius: 25px;
+  border: 2px solid #e9ecef;
+  width: 250px;
+  font-size: 1rem;
+  color: #495057;
+  background-color: white;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='%23495057' viewBox='0 0 16 16'%3E%3Cpath d='M8 11L3 6h10l-5 5z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 1rem center;
+  background-size: 12px;
+}
+
+.form-select:focus {
+  outline: none;
+  border-color: #80bdff;
+  box-shadow: 0 0 0 0.2rem rgba(0,123,255,0.25);
+}
+
+.lista-reuniones {
+  display: grid;
+  gap: 1.5rem;
+}
+
+.reunion-card {
+  background: white;
+  border-radius: 15px;
+  padding: 1.5rem;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+  transition: all 0.3s ease;
+  border: 1px solid #e9ecef;
+}
+
+.reunion-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 15px rgba(0,0,0,0.1);
+}
+
+.reunion-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.2rem;
+}
+
+.reunion-header h3 {
+  color: #2c3e50;
+  font-size: 1.3rem;
+  margin: 0;
+}
+
+.estado-reunion {
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.estado-reunion.pendiente {
+  background-color: #fff3cd;
+  color: #856404;
+}
+
+.estado-reunion.programada {
+  background-color: #d4edda;
+  color: #155724;
+}
+
+.reunion-detalles {
+  margin-bottom: 1.5rem;
+  padding: 1rem;
+  background-color: #f8f9fa;
+  border-radius: 10px;
+}
+
+.reunion-detalles p {
+  margin: 0.5rem 0;
+  color: #495057;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.95rem;
+}
+
+.reunion-detalles i {
+  color: #3498db;
+  width: 20px;
+  text-align: center;
+}
+
+.reunion-participantes h4 {
+  color: #2c3e50;
+  font-size: 1.1rem;
+  margin-bottom: 1rem;
+}
+
+.participantes-avatars {
+  display: flex;
+  gap: 0.8rem;
+  flex-wrap: wrap;
+}
+
+.participantes-avatars img {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid white;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  transition: transform 0.3s ease;
+}
+
+.participantes-avatars img:hover {
+  transform: scale(1.1);
+  z-index: 1;
+}
+
+.reunion-acciones {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1.5rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid #e9ecef;
+}
+
+.btn-editar, .btn-eliminar {
+  padding: 10px 20px;
+  border-radius: 20px;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.95rem;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.btn-editar {
+  background-color: #17a2b8;
+  color: white;
+}
+
+.btn-editar:hover {
+  background-color: #138496;
+  transform: translateY(-2px);
+}
+
+.btn-eliminar {
+  background-color: #dc3545;
+  color: white;
+}
+
+.btn-eliminar:hover {
+  background-color: #c82333;
+  transform: translateY(-2px);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  #reuniones-container {
+      padding: 1rem;
+  }
+
+  .reunion-header {
+      flex-direction: column;
+      gap: 1rem;
+      text-align: center;
+  }
+
+  .dashboard-stats {
+      grid-template-columns: 1fr;
+  }
+
+  .reunion-acciones {
+      flex-direction: column;
+  }
+
+  .btn-editar, .btn-eliminar {
+      width: 100%;
+      justify-content: center;
+  }
+}
