@@ -184,3 +184,201 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     };
 });
+
+class GestionReuniones {
+    constructor() {
+        this.reuniones = JSON.parse(localStorage.getItem('reuniones')) || [];
+        this.user = JSON.parse(sessionStorage.getItem('currentUser') || localStorage.getItem('currentUser'));
+        this.inicializarEventos();
+    }
+
+    inicializarEventos() {
+        const reunionesLink = document.getElementById('Gestion_reuniones');
+        if (reunionesLink) {
+            reunionesLink.addEventListener('click', (e) => {
+                e.preventDefault();
+                this.mostrarInterfaz();
+            });
+        }
+    }
+
+    mostrarInterfaz() {
+        // Verificar autenticación
+        if (!this.user) {
+            console.error("Usuario no autenticado");
+            window.location.href = '/Login.html';
+            return;
+        }
+
+        const mainContent = document.getElementById('main-content');
+        if (!mainContent) {
+            console.error("Elemento main-content no encontrado");
+            return;
+        }
+
+        mainContent.innerHTML = `
+            <h2>Gestión de Reuniones Virtuales</h2>
+            <div class="reunion-form">
+                <div class="form-group">
+                    <label for="tituloReunion">Título de la reunión:</label>
+                    <input type="text" id="tituloReunion" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label for="fechaReunion">Fecha y hora:</label>
+                    <input type="datetime-local" id="fechaReunion" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label for="participantesReunion">Participantes (separados por coma):</label>
+                    <input type="text" id="participantesReunion" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label for="enlaceReunion">Enlace de la reunión:</label>
+                    <input type="text" id="enlaceReunion" class="form-control" required>
+                </div>
+                <button onclick="gestionReuniones.agregarReunion()" class="btn btn-primary">
+                    Programar Reunión
+                </button>
+            </div>
+            <div id="listaReuniones" class="lista-reuniones mt-4">
+                <h3>Reuniones Programadas</h3>
+                <div id="reunionesContainer"></div>
+            </div>
+        `;
+
+        this.actualizarListaReuniones();
+    }
+
+    agregarReunion() {
+        if (!this.user) {
+            alert('Debe iniciar sesión para programar reuniones');
+            return;
+        }
+
+        const titulo = document.getElementById('tituloReunion').value.trim();
+        const fecha = document.getElementById('fechaReunion').value;
+        const participantes = document.getElementById('participantesReunion').value
+            .split(',')
+            .map(p => p.trim())
+            .filter(p => p);
+        const enlace = document.getElementById('enlaceReunion').value.trim();
+
+        if (!titulo || !fecha || !participantes.length || !enlace) {
+            alert('Por favor, complete todos los campos correctamente');
+            return;
+        }
+
+        const nuevaReunion = {
+            id: Date.now(),
+            titulo,
+            fecha,
+            participantes,
+            enlace,
+            organizador: this.user.username,
+            createdAt: new Date().toISOString()
+        };
+
+        try {
+            this.reuniones.push(nuevaReunion);
+            this.guardarReuniones();
+            this.actualizarListaReuniones();
+            this.limpiarFormulario();
+            alert('Reunión programada exitosamente');
+        } catch (error) {
+            console.error('Error al guardar la reunión:', error);
+            alert('Error al programar la reunión. Por favor, intente nuevamente.');
+        }
+    }
+
+    eliminarReunion(id) {
+        if (!this.user) {
+            alert('Debe iniciar sesión para eliminar reuniones');
+            return;
+        }
+
+        const reunion = this.reuniones.find(r => r.id === id);
+        if (!reunion) {
+            alert('Reunión no encontrada');
+            return;
+        }
+
+        // Solo el organizador o un admin puede eliminar la reunión
+        if (reunion.organizador !== this.user.username && this.user.role !== 'admin') {
+            alert('No tiene permisos para eliminar esta reunión');
+            return;
+        }
+
+        if (confirm('¿Está seguro de que desea eliminar esta reunión?')) {
+            this.reuniones = this.reuniones.filter(reunion => reunion.id !== id);
+            this.guardarReuniones();
+            this.actualizarListaReuniones();
+        }
+    }
+
+    actualizarListaReuniones() {
+        const container = document.getElementById('reunionesContainer');
+        if (!container) return;
+
+        container.innerHTML = '';
+
+        if (this.reuniones.length === 0) {
+            container.innerHTML = '<p class="text-muted">No hay reuniones programadas</p>';
+            return;
+        }
+
+        this.reuniones
+            .sort((a, b) => new Date(a.fecha) - new Date(b.fecha))
+            .forEach(reunion => {
+                const reunionElement = document.createElement('div');
+                reunionElement.className = 'card mb-3 reunion-item';
+                
+                const fechaReunion = new Date(reunion.fecha);
+                const esReunionPasada = fechaReunion < new Date();
+                
+                reunionElement.innerHTML = `
+                    <div class="card-body">
+                        <h4 class="card-title">${reunion.titulo}</h4>
+                        <p class="card-text">
+                            <strong>Fecha:</strong> ${fechaReunion.toLocaleString()}<br>
+                            <strong>Estado:</strong> <span class="badge ${esReunionPasada ? 'bg-secondary' : 'bg-primary'}">
+                                ${esReunionPasada ? 'Finalizada' : 'Programada'}
+                            </span><br>
+                            <strong>Organizador:</strong> ${reunion.organizador}<br>
+                            <strong>Participantes:</strong> ${reunion.participantes.join(', ')}<br>
+                            <strong>Enlace:</strong> <a href="${reunion.enlace}" target="_blank" class="link-primary">
+                                ${reunion.enlace}
+                            </a>
+                        </p>
+                        ${!esReunionPasada ? `
+                            <button onclick="gestionReuniones.eliminarReunion(${reunion.id})" 
+                                    class="btn btn-danger btn-sm">
+                                Eliminar
+                            </button>
+                        ` : ''}
+                    </div>
+                `;
+                container.appendChild(reunionElement);
+            });
+    }
+
+    guardarReuniones() {
+        try {
+            localStorage.setItem('reuniones', JSON.stringify(this.reuniones));
+        } catch (error) {
+            console.error('Error al guardar las reuniones:', error);
+            alert('Error al guardar los cambios. Por favor, intente nuevamente.');
+        }
+    }
+
+    limpiarFormulario() {
+        const campos = ['tituloReunion', 'fechaReunion', 'participantesReunion', 'enlaceReunion'];
+        campos.forEach(campo => {
+            const elemento = document.getElementById(campo);
+            if (elemento) elemento.value = '';
+        });
+    }
+}
+
+// Inicializar la gestión de reuniones cuando el DOM esté cargado
+document.addEventListener('DOMContentLoaded', () => {
+    window.gestionReuniones = new GestionReuniones();
+});

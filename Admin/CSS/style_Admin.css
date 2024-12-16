@@ -148,3 +148,318 @@ body {
 .chat-input button {
   padding: 10px;
 }
+
+
+.mensajeria-container {
+  display: flex;
+  height: 500px;
+}
+
+.contactos {
+  width: 30%;
+  background-color: #f7f7f7;
+  border-right: 1px solid #ddd;
+  overflow-y: auto;
+  padding: 10px;
+}
+
+.contacto {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px;
+  cursor: pointer;
+  border-bottom: 1px solid #ddd;
+  transition: background-color 0.3s ease;
+}
+
+.contacto:hover {
+  background-color: #eaeaea;
+}
+
+.contacto-imagen {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid #ddd;
+}
+
+.chat {
+  width: 70%;
+  display: flex;
+  flex-direction: column;
+}
+
+.chat.oculto {
+  display: none;
+}
+
+.mensajes {
+  flex: 1;
+  padding: 10px;
+  overflow-y: auto;
+  background-color: #fff;
+  border-bottom: 1px solid #ddd;
+}
+
+.mensaje {
+  margin-bottom: 10px;
+  padding: 10px;
+  border-radius: 10px;
+}
+
+.mensaje.enviado {
+  background-color: #d1e7dd;
+  text-align: right;
+}
+
+.mensaje.recibido {
+  background-color: #f8d7da;
+  text-align: left;
+}
+
+.chat-input {
+  display: flex;
+  padding: 10px;
+  border-top: 1px solid #ddd;
+  background-color: #f7f7f7;
+}
+
+.chat-input input {
+  flex: 1;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  margin-right: 10px;
+}
+
+.chat-input button {
+  padding: 10px 20px;
+  border: none;
+  background-color: #5370cc;
+  color: white;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.chat-input button:hover {
+  background-color: #3b4f99;
+}
+
+
+
+/* Contenedor principal de reuniones */
+.reunion-container {
+  background-color: #f8f9fa;
+  border-radius: 15px;
+  padding: 2rem;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+  max-width: 1200px;
+  margin: 2rem auto;
+}
+
+/* Encabezados */
+.reunion-container h2 {
+  color: #2c3e50;
+  font-size: 2rem;
+  margin-bottom: 1.5rem;
+  border-bottom: 3px solid #3498db;
+  padding-bottom: 0.5rem;
+}
+
+.reunion-container h3 {
+  color: #34495e;
+  font-size: 1.5rem;
+  margin: 1.5rem 0;
+}
+
+/* Formulario */
+.reunion-form {
+  background: white;
+  padding: 2rem;
+  border-radius: 10px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+  margin-bottom: 2rem;
+}
+
+.form-group {
+  margin-bottom: 1.5rem;
+}
+
+.form-group label {
+  display: block;
+  color: #2c3e50;
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 0.75rem;
+  border: 2px solid #e2e8f0;
+  border-radius: 8px;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+}
+
+.form-group input:focus {
+  border-color: #3498db;
+  box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.2);
+  outline: none;
+}
+
+/* Botones */
+.btn-primary {
+  background-color: #3498db;
+  color: white;
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+  background-color: #2980b9;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(52, 152, 219, 0.3);
+}
+
+.btn-danger {
+  background-color: #e74c3c;
+  color: white;
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 6px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn-danger:hover {
+  background-color: #c0392b;
+  transform: translateY(-1px);
+  box-shadow: 0 2px 8px rgba(231, 76, 60, 0.3);
+}
+
+/* Lista de reuniones */
+.lista-reuniones {
+  margin-top: 2rem;
+}
+
+.reunion-item {
+  background: white;
+  border: 1px solid #e2e8f0;
+  border-radius: 10px;
+  padding: 1.5rem;
+  margin-bottom: 1rem;
+  transition: all 0.3s ease;
+}
+
+.reunion-item:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.reunion-item h4 {
+  color: #2c3e50;
+  font-size: 1.25rem;
+  margin-bottom: 1rem;
+}
+
+.reunion-item p {
+  color: #34495e;
+  margin-bottom: 0.5rem;
+  line-height: 1.6;
+}
+
+/* Enlaces */
+.reunion-item a {
+  color: #3498db;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.reunion-item a:hover {
+  color: #2980b9;
+  text-decoration: underline;
+}
+
+/* Badges */
+.badge {
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  font-weight: 500;
+  font-size: 0.875rem;
+}
+
+.bg-primary {
+  background-color: #3498db;
+}
+
+.bg-secondary {
+  background-color: #95a5a6;
+}
+
+/* Responsividad */
+@media (max-width: 768px) {
+  .reunion-container {
+      padding: 1rem;
+      margin: 1rem;
+  }
+
+  .reunion-form {
+      padding: 1rem;
+  }
+
+  .btn-primary {
+      width: 100%;
+  }
+
+  .reunion-item {
+      padding: 1rem;
+  }
+}
+
+/* Animaciones */
+@keyframes fadeIn {
+  from {
+      opacity: 0;
+      transform: translateY(20px);
+  }
+  to {
+      opacity: 1;
+      transform: translateY(0);
+  }
+}
+
+.reunion-item {
+  animation: fadeIn 0.5s ease-out forwards;
+}
+
+/* Estilos para estados de carga y errores */
+.loading {
+  opacity: 0.7;
+  pointer-events: none;
+}
+
+.error-message {
+  color: #e74c3c;
+  background-color: #fdf0ed;
+  padding: 1rem;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+  border-left: 4px solid #e74c3c;
+}
+
+.success-message {
+  color: #27ae60;
+  background-color: #edfdf5;
+  padding: 1rem;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+  border-left: 4px solid #27ae60;
+}
