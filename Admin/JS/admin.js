@@ -20,58 +20,143 @@ document.addEventListener('DOMContentLoaded', function () {
 
     const mainContent = document.getElementById('main-content');
 
-    // Datos simulados
-    const empleados = [
-        { id: 1, nombre: "Jimmy Montenegro", rol: "Desarrollador" },
-        { id: 2, nombre: "Estefania Ipiales", rol: "Desarrolladora" },
-        { id: 3, nombre: "Wladimir Chalacna", rol: "Líder de Proyecto" }
-    ];
-
-    const tareas = [
-        { titulo: "Diseñar la base de datos", estado: "Completada", asignado: "Jimmy" },
-        { titulo: "Desarrollar el backend", estado: "En Progreso", asignado: "Estefania" },
-        { titulo: "Pruebas finales", estado: "Pendiente", asignado: "Jimmy" }
-    ];
-
-    const equipos = [
-        { nombre: "Equipo Backend", miembros: ["Jimmy", "Estefania"] },
-        { nombre: "Equipo QA", miembros: ["Wladimir"] }
-    ];
-
-    const asistencias = [
-        { empleado: "Jimmy Montenegro", dias: ["2024-12-01", "2024-12-02"], horas: ["8h", "7h"] },
-        { empleado: "Estefania Ipiales", dias: ["2024-12-01"], horas: ["9h"] }
-    ];
-
-    const mensajes = [
-        { remitente: "Wladimir", mensaje: "¿Cómo va el desarrollo?", tipo: "enviado" },
-        { remitente: "Jimmy", mensaje: "En progreso, terminando el backend.", tipo: "recibido" }
-    ];
-
-    // Funciones para cargar contenido
-    function cargarGestionEmpleados() {
-        const empleadosHTML = empleados.map(emp => `
-            <tr>
-                <td>${emp.nombre}</td>
-                <td>${emp.rol}</td>
-                <td><button class="btn-accion" onclick="editarRol(${emp.id})">Editar Rol</button></td>
-            </tr>
-        `).join('');
-        mainContent.innerHTML = `
-            <h1>Gestión de Empleados</h1>
-            <table class="table">
-                <thead>
-                    <tr>
-                        <th>Nombre</th>
-                        <th>Rol</th>
-                        <th>Acciones</th>
-                    </tr>
-                </thead>
-                <tbody>${empleadosHTML}</tbody>
-            </table>
-        `;
+// Datos simulados actualizados
+const empleados = [
+    { 
+        id: 1, 
+        nombre: "Jimmy Montenegro", 
+        rol: "Desarrollador",
+        cedula: "1723456789",
+        celular: "0987654321"
+    },
+    { 
+        id: 2, 
+        nombre: "Estefania Ipiales", 
+        rol: "Desarrolladora",
+        cedula: "1734567890",
+        celular: "0998765432"
+    },
+    { 
+        id: 3, 
+        nombre: "Wladimir Chalacna", 
+        rol: "Líder de Proyecto",
+        cedula: "1745678901",
+        celular: "0976543210"
     }
+];
 
+// Mantener las otras estructuras de datos sin cambios
+const tareas = [
+    { titulo: "Diseñar la base de datos", estado: "Completada", asignado: "Jimmy" },
+    { titulo: "Desarrollar el backend", estado: "En Progreso", asignado: "Estefania" },
+    { titulo: "Pruebas finales", estado: "Pendiente", asignado: "Jimmy" }
+];
+
+const equipos = [
+    { nombre: "Equipo Backend", miembros: ["Jimmy", "Estefania"] },
+    { nombre: "Equipo QA", miembros: ["Wladimir"] }
+];
+
+const asistencias = [
+    { empleado: "Jimmy Montenegro", dias: ["2024-12-01", "2024-12-02"], horas: ["8h", "7h"] },
+    { empleado: "Estefania Ipiales", dias: ["2024-12-01"], horas: ["9h"] }
+];
+
+const mensajes = [
+    { remitente: "Wladimir", mensaje: "¿Cómo va el desarrollo?", tipo: "enviado" },
+    { remitente: "Jimmy", mensaje: "En progreso, terminando el backend.", tipo: "recibido" }
+];
+
+// Función mejorada para cargar gestión de empleados
+function cargarGestionEmpleados() {
+    const empleadosHTML = empleados.map(emp => `
+        <tr>
+            <td>${emp.nombre}</td>
+            <td>${emp.rol}</td>
+            <td>${emp.cedula}</td>
+            <td>${emp.celular}</td>
+            <td>
+                <div class="acciones-container">
+                    <button class="btn-accion editar" onclick="editarEmpleado(${emp.id})">
+                        <i class="fas fa-edit"></i> Editar
+                    </button>
+                    <button class="btn-accion eliminar" onclick="eliminarEmpleado(${emp.id})">
+                        <i class="fas fa-trash"></i> Eliminar
+                    </button>
+                </div>
+            </td>
+        </tr>
+    `).join('');
+
+    mainContent.innerHTML = `
+        <div class="gestion-empleados-container">
+            <div class="header-container">
+                <h1>Gestión de Empleados</h1>
+                <button class="btn-nuevo-empleado" onclick="agregarEmpleado()">
+                    <i class="fas fa-user-plus"></i> Nuevo Empleado
+                </button>
+            </div>
+            
+            <div class="table-container">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Nombre</th>
+                            <th>Rol</th>
+                            <th>Cédula</th>
+                            <th>Celular</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>${empleadosHTML}</tbody>
+                </table>
+            </div>
+        </div>
+    `;
+}
+
+// Funciones de gestión
+function editarEmpleado(id) {
+    const empleado = empleados.find(emp => emp.id === id);
+    if (!empleado) return;
+
+    const nuevosDatos = {
+        nombre: prompt("Nombre:", empleado.nombre),
+        rol: prompt("Rol:", empleado.rol),
+        cedula: prompt("Cédula:", empleado.cedula),
+        celular: prompt("Celular:", empleado.celular)
+    };
+
+    if (nuevosDatos.nombre && nuevosDatos.rol && nuevosDatos.cedula && nuevosDatos.celular) {
+        Object.assign(empleado, nuevosDatos);
+        cargarGestionEmpleados();
+    }
+}
+
+function eliminarEmpleado(id) {
+    if (confirm("¿Está seguro que desea eliminar este empleado?")) {
+        const index = empleados.findIndex(emp => emp.id === id);
+        if (index !== -1) {
+            empleados.splice(index, 1);
+            cargarGestionEmpleados();
+        }
+    }
+}
+
+function agregarEmpleado() {
+    const nuevoEmpleado = {
+        id: empleados.length + 1,
+        nombre: prompt("Ingrese el nombre del empleado:"),
+        rol: prompt("Ingrese el rol del empleado:"),
+        cedula: prompt("Ingrese el número de cédula:"),
+        celular: prompt("Ingrese el número de celular:")
+    };
+
+    if (nuevoEmpleado.nombre && nuevoEmpleado.rol && nuevoEmpleado.cedula && nuevoEmpleado.celular) {
+        empleados.push(nuevoEmpleado);
+        cargarGestionEmpleados();
+    }
+}
     function cargarGestionTareas() {
         const tareasHTML = tareas.map(t => `
             <tr>
